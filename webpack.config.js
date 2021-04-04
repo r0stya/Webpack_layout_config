@@ -12,6 +12,10 @@ module.exports = {
   mode: mode,
   target: target,
 
+  output: {
+    assetModuleFilename: 'img/[hash][ext][query]'
+  },
+
   devServer: {
     contentBase: './dist',
     hot: true,
@@ -26,9 +30,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: 'asset'
+      },
+      {
         test: /\.(c|sa|sc)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: '' }
+          },
           'css-loader',
           'postcss-loader',
           'sass-loader',

@@ -1,4 +1,5 @@
 import './styles/index.scss';
+import img from './img/05.jpg'
 
 const pc = {
   cpu: 'ryzen',
