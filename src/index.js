@@ -5,4 +5,10 @@ const pc = {
   gpu: 'RTX 3090TI'
 };
 
-console.log(pc);
+const pc2 = {
+  ...pc,
+  ram: 12,
+  gpu: '1080TI',
+};
+
+console.log(pc, pc2);
