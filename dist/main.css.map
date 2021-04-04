@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///src/scss/main.scss"],"names":[],"mappings":"AAGA;EACI,sBAJQ;EAGZ;IAIQ,cANI","file":"main.css","sourcesContent":["$black: #000;\r\n$bg: #f1f1f1;\r\n\r\nbody{\r\n    background-color: $black;\r\n\r\n    h1{\r\n        color: $bg;\r\n    }\r\n}"],"sourceRoot":""}
