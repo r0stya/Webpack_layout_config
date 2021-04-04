@@ -1,3 +1,5 @@
+import './styles/index.scss';
+
 const pc = {
   cpu: 'ryzen',
   ram: 16,
