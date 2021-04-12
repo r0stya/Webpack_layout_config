@@ -2,6 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 let mode = 'development';
 let target = 'web';
@@ -17,7 +18,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'img/[hash][ext][query]'
+    publicPath: '',
   },
 
   devServer: {
@@ -35,13 +36,27 @@ module.exports = {
         template: './src/index.html'
       }
     ),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./src/img", to: "img" },
+        { from: "./src/assets", to: "assets" },
+      ],
+    }),
   ],
 
   module: {
     rules: [
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img'
+            }
+          },
+        ],
       },
       {
         test: /\.(c|sa|sc)ss$/i,
