@@ -39,7 +39,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "./src/img", to: "img" },
-        { from: "./src/assets", to: "assets" },
       ],
     }),
   ],
@@ -80,6 +79,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
       },
     ]
   }
